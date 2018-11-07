@@ -1,0 +1,98 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "response": {
+                "status": {
+                    "message": "OK",
+                    "code": 200
+                },
+                "body": {
+                    "string": "{\"id\":31353077,\"id_str\":\"31353077\",\"name\":\"Nathan Fillion\",\"screen_name\":\"NathanFillion\",\"location\":\"Los Angeles\",\"description\":\"It costs nothing to say something kind. Even less to shut up altogether.\",\"url\":null,\"entities\":{\"description\":{\"urls\":[]}},\"protected\":false,\"followers_count\":3509531,\"friends_count\":611,\"listed_count\":37565,\"created_at\":\"Wed Apr 15 05:57:40 +0000 2009\",\"favourites_count\":261,\"utc_offset\":-25200,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":false,\"verified\":true,\"statuses_count\":10558,\"lang\":\"en\",\"status\":{\"created_at\":\"Sat Nov 05 01:41:20 +0000 2016\",\"id\":794716195446460416,\"id_str\":\"794716195446460416\",\"text\":\"Just posted a photo https:\\/\\/t.co\\/cyMOnKy43S\",\"truncated\":false,\"entities\":{\"hashtags\":[],\"symbols\":[],\"user_mentions\":[],\"urls\":[{\"url\":\"https:\\/\\/t.co\\/cyMOnKy43S\",\"expanded_url\":\"https:\\/\\/www.instagram.com\\/p\\/BMaQ8sojUUp\\/\",\"display_url\":\"instagram.com\\/p\\/BMaQ8sojUUp\\/\",\"indices\":[20,43]}]},\"source\":\"\\u003ca href=\\\"http:\\/\\/instagram.com\\\" rel=\\\"nofollow\\\"\\u003eInstagram\\u003c\\/a\\u003e\",\"in_reply_to_status_id\":null,\"in_reply_to_status_id_str\":null,\"in_reply_to_user_id\":null,\"in_reply_to_user_id_str\":null,\"in_reply_to_screen_name\":null,\"geo\":null,\"coordinates\":null,\"place\":null,\"contributors\":null,\"is_quote_status\":false,\"retweet_count\":63,\"favorite_count\":461,\"favorited\":false,\"retweeted\":false,\"possibly_sensitive\":false,\"lang\":\"en\"},\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":true,\"profile_background_color\":\"131516\",\"profile_background_image_url\":\"http:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_image_url_https\":\"https:\\/\\/abs.twimg.com\\/images\\/themes\\/theme14\\/bg.gif\",\"profile_background_tile\":true,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/713071349699371010\\/IFGT6CVK_normal.jpg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/713071349699371010\\/IFGT6CVK_normal.jpg\",\"profile_banner_url\":\"https:\\/\\/pbs.twimg.com\\/profile_banners\\/31353077\\/1375475379\",\"profile_link_color\":\"009999\",\"profile_sidebar_border_color\":\"EEEEEE\",\"profile_sidebar_fill_color\":\"EFEFEF\",\"profile_text_color\":\"333333\",\"profile_use_background_image\":true,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\"}"
+                },
+                "headers": {
+                    "content-length": [
+                        "2389"
+                    ],
+                    "x-transaction": [
+                        "00fdffba00a2bb1b"
+                    ],
+                    "last-modified": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "x-rate-limit-reset": [
+                        "1478382709"
+                    ],
+                    "strict-transport-security": [
+                        "max-age=631138519"
+                    ],
+                    "server": [
+                        "tsa_b"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate, pre-check=0, post-check=0"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-rate-limit-remaining": [
+                        "13"
+                    ],
+                    "date": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "x-twitter-response-tags": [
+                        "BouncerCompliant"
+                    ],
+                    "x-rate-limit-limit": [
+                        "15"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "status": [
+                        "200 OK"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "content-disposition": [
+                        "attachment; filename=json.json"
+                    ],
+                    "expires": [
+                        "Tue, 31 Mar 1981 05:00:00 GMT"
+                    ],
+                    "content-type": [
+                        "application/json;charset=utf-8"
+                    ],
+                    "set-cookie": [
+                        "lang=en; Path=/",
+                        "guest_id=v1%3A147838224002113328; Domain=.twitter.com; Path=/; Expires=Mon, 05-Nov-2018 21:44:00 UTC"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "x-access-level": [
+                        "read-write-directmessages"
+                    ],
+                    "x-response-time": [
+                        "44"
+                    ],
+                    "x-connection-hash": [
+                        "1aea52f973e0d01d3168d7d5220acfb7"
+                    ]
+                }
+            },
+            "request": {
+                "method": "GET",
+                "uri": "https://api.twitter.com/1.1/lists/members/show.json?owner_screen_name=applepie&slug=stars&screen_name=NathanFillion",
+                "body": null,
+                "headers": {
+                    "Host": [
+                        "api.twitter.com"
+                    ]
+                }
+            }
+        }
+    ]
+}

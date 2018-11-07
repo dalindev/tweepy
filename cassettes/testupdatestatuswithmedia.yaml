@@ -1,0 +1,116 @@
+interactions:
+- request:
+    body: !!binary |
+      LS1UdzNlUHkNCkNvbnRlbnQtRGlzcG9zaXRpb246IGZvcm0tZGF0YTsgbmFtZT0ibWVkaWFbXSI7
+      IGZpbGVuYW1lPSJiJ2V4YW1wbGVzL2Jhbm5lci5wbmcnIg0KQ29udGVudC1UeXBlOiBpbWFnZS9w
+      bmcNCg0KiVBORw0KGgoAAAANSUhEUgAABOQAAAJyBAMAAACWAAJLAAAAG1BMVEXMzMyWlpa+vr6x
+      sbHFxcWqqqq3t7ecnJyjo6MqpKB3AAAOpElEQVR4nO3dy5Mbx3kA8NXucs2jYJviHsGSq+SjYSbR
+      FUyKpI9ZyUn5CFZJFR8F52Efdy27/G+HC0z3vPoFCTvlVH6/iwX0fIPPnK+6e3oee3EBAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACc3+evP9qmWq6//dtq
+      9ad/T7bVvfvdfvXyr9/88MQK7n6baWhJORvMMt6uHm0TLf+yPzStXv7D+PtPVgm7SfD1l13Df6Z2
+      /SNdrVa/SjbkUm4KZhk3+1zJve3radwtJEvuX8fB13ex5UVi3z/S5mNR7RLfZ1NuCWYZoTS2s5ar
+      bEG1lNxm0PTi3EnfHDqy9QkpNwSzkP9YZUru+mF4/EaHqKHkfjNq+8OZk3512OvtNOdCyvVgFhJL
+      Yztt+WJcUZ8Nmuold7kfN+7OmvR1IqdKyvVglnETj8920nI5Lald31YvuVeTxvMe3/fdXn/WnnI1
+      mGUMRqLtpGlaNMOqqZbc7OCft5sLWd+3p1wNZhkf+sOzHbdc72dVs46N1ZJ7P2v96Rmzftbt8+U4
+      52LKtWCWMZzjb8dNz+c19V+xsVpyD7PWcx7hzSyhesq1YBYxWlLYjts2s8M3WOqoldxVuflHiqP2
+      +oSUa8EsYbyksB23pYpqHVprJfcm0Xy+kTXsfTJTK6dcCWYR415hO2pLDFKDCXftgtd8XF2tbs+W
+      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
+    headers:
+      Content-Length: ['3978']
+      Content-Type: [multipart/form-data; boundary=Tw3ePy]
+      Host: [api.twitter.com]
+    method: POST
+    uri: https://api.twitter.com/1.1/statuses/update_with_media.json?status=testing+1000
+  response:
+    body: {string: '{"created_at":"Sat Nov 05 21:44:24 +0000 2016","id":795018956507582465,"id_str":"795018956507582465","text":"testing
+        1000 https:\/\/t.co\/HFZNy7Fz9o","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[],"media":[{"id":795018953181593600,"id_str":"795018953181593600","indices":[13,36],"media_url":"http:\/\/pbs.twimg.com\/media\/Cwh5hpYXgAAXF-1.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/Cwh5hpYXgAAXF-1.jpg","url":"https:\/\/t.co\/HFZNy7Fz9o","display_url":"pic.twitter.com\/HFZNy7Fz9o","expanded_url":"https:\/\/twitter.com\/TheTweepyTester\/status\/795018956507582465\/photo\/1","type":"photo","sizes":{"small":{"w":680,"h":340,"resize":"fit"},"medium":{"w":1200,"h":600,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"large":{"w":1252,"h":626,"resize":"fit"}}}]},"extended_entities":{"media":[{"id":795018953181593600,"id_str":"795018953181593600","indices":[13,36],"media_url":"http:\/\/pbs.twimg.com\/media\/Cwh5hpYXgAAXF-1.jpg","media_url_https":"https:\/\/pbs.twimg.com\/media\/Cwh5hpYXgAAXF-1.jpg","url":"https:\/\/t.co\/HFZNy7Fz9o","display_url":"pic.twitter.com\/HFZNy7Fz9o","expanded_url":"https:\/\/twitter.com\/TheTweepyTester\/status\/795018956507582465\/photo\/1","type":"photo","sizes":{"small":{"w":680,"h":340,"resize":"fit"},"medium":{"w":1200,"h":600,"resize":"fit"},"thumb":{"w":150,"h":150,"resize":"crop"},"large":{"w":1252,"h":626,"resize":"fit"}}}]},"source":"\u003ca
+        href=\"https:\/\/github.com\/tweepy\/tweepy\" rel=\"nofollow\"\u003eTweepy
+        dev\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":794682839556038656,"id_str":"794682839556038656","name":"Tweepy
+        Test","screen_name":"TheTweepyTester","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":18,"listed_count":0,"created_at":"Fri
+        Nov 04 23:28:48 +0000 2016","favourites_count":0,"utc_offset":-25200,"time_zone":"Pacific
+        Time (US & Canada)","geo_enabled":false,"verified":false,"statuses_count":112,"lang":"en","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"000000","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/794682839556038656\/1478382257","profile_link_color":"1B95E0","profile_sidebar_border_color":"000000","profile_sidebar_fill_color":"000000","profile_text_color":"000000","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":0,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"}'}
+    headers:
+      cache-control: ['no-cache, no-store, must-revalidate, pre-check=0, post-check=0']
+      content-disposition: [attachment; filename=json.json]
+      content-length: ['3365']
+      content-type: [application/json;charset=utf-8]
+      date: ['Sat, 05 Nov 2016 21:44:24 GMT']
+      expires: ['Tue, 31 Mar 1981 05:00:00 GMT']
+      last-modified: ['Sat, 05 Nov 2016 21:44:24 GMT']
+      pragma: [no-cache]
+      server: [tsa_b]
+      set-cookie: [lang=en; Path=/, 'guest_id=v1%3A147838226382549038; Domain=.twitter.com;
+          Path=/; Expires=Mon, 05-Nov-2018 21:44:24 UTC']
+      status: [200 OK]
+      strict-transport-security: [max-age=631138519]
+      x-access-level: [read-write-directmessages]
+      x-connection-hash: [bcfd656236452da90d758354335ebe19]
+      x-content-type-options: [nosniff]
+      x-frame-options: [SAMEORIGIN]
+      x-mediaratelimit-class: [photos]
+      x-mediaratelimit-limit: ['3000']
+      x-mediaratelimit-remaining: ['2993']
+      x-mediaratelimit-reset: ['1478453411']
+      x-response-time: ['1136']
+      x-transaction: [00c4d70f0031146f]
+      x-tsa-request-body-time: ['1']
+      x-twitter-response-tags: [BouncerCompliant]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

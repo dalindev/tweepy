@@ -1,0 +1,179 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "response": {
+                "status": {
+                    "message": "OK",
+                    "code": 200
+                },
+                "body": {
+                    "string": "{\"id\":8078,\"id_str\":\"8078\",\"name\":\"stars\",\"uri\":\"\\/applepie\\/lists\\/stars\",\"subscriber_count\":8,\"member_count\":54,\"mode\":\"public\",\"description\":\"\",\"slug\":\"stars\",\"full_name\":\"@applepie\\/stars\",\"created_at\":\"Fri Oct 16 00:25:42 +0000 2009\",\"following\":false,\"user\":{\"id\":9302282,\"id_str\":\"9302282\",\"name\":\"Josh Roesslein\",\"screen_name\":\"applepie\",\"location\":\"San Francisco Bay Area\",\"description\":\"pro\\u00b7gram\\u00b7mer (n) An organism capable of converting caffeine into code. Coding @ http:\\/\\/t.co\\/Rt18iqhC9z\",\"url\":null,\"entities\":{\"description\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/Rt18iqhC9z\",\"expanded_url\":\"http:\\/\\/OpenGov.com\",\"display_url\":\"OpenGov.com\",\"indices\":[80,102]}]}},\"protected\":false,\"followers_count\":540,\"friends_count\":327,\"listed_count\":31,\"created_at\":\"Mon Oct 08 03:00:34 +0000 2007\",\"favourites_count\":16,\"utc_offset\":-25200,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":true,\"verified\":false,\"statuses_count\":8125,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"3B94D9\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/8076084\\/200911032903-12395.jpg\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/8076084\\/200911032903-12395.jpg\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/2813279506\\/f0addfcfa062b23a94c00931ff35f03a_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/2813279506\\/f0addfcfa062b23a94c00931ff35f03a_normal.jpeg\",\"profile_link_color\":\"ABB8C2\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\"}}"
+                },
+                "headers": {
+                    "content-length": [
+                        "1947"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "last-modified": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "set-cookie": [
+                        "lang=en; Path=/",
+                        "guest_id=v1%3A147838224042375163; Domain=.twitter.com; Path=/; Expires=Mon, 05-Nov-2018 21:44:00 UTC"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "content-disposition": [
+                        "attachment; filename=json.json"
+                    ],
+                    "expires": [
+                        "Tue, 31 Mar 1981 05:00:00 GMT"
+                    ],
+                    "x-transaction": [
+                        "00f9bc4a00fe5761"
+                    ],
+                    "content-type": [
+                        "application/json;charset=utf-8"
+                    ],
+                    "strict-transport-security": [
+                        "max-age=631138519"
+                    ],
+                    "status": [
+                        "200 OK"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "server": [
+                        "tsa_b"
+                    ],
+                    "x-access-level": [
+                        "read-write-directmessages"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate, pre-check=0, post-check=0"
+                    ],
+                    "x-response-time": [
+                        "99"
+                    ],
+                    "date": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "x-connection-hash": [
+                        "2304d51b481dca41f80e9ceb980c6f2d"
+                    ],
+                    "x-twitter-response-tags": [
+                        "BouncerCompliant"
+                    ]
+                }
+            },
+            "request": {
+                "method": "POST",
+                "uri": "https://api.twitter.com/1.1/lists/subscribers/create.json?owner_screen_name=applepie&slug=stars",
+                "body": null,
+                "headers": {
+                    "Host": [
+                        "api.twitter.com"
+                    ],
+                    "Content-Length": [
+                        "0"
+                    ]
+                }
+            }
+        },
+        {
+            "response": {
+                "status": {
+                    "message": "OK",
+                    "code": 200
+                },
+                "body": {
+                    "string": "{\"id\":8078,\"id_str\":\"8078\",\"name\":\"stars\",\"uri\":\"\\/applepie\\/lists\\/stars\",\"subscriber_count\":7,\"member_count\":54,\"mode\":\"public\",\"description\":\"\",\"slug\":\"stars\",\"full_name\":\"@applepie\\/stars\",\"created_at\":\"Fri Oct 16 00:25:42 +0000 2009\",\"following\":true,\"user\":{\"id\":9302282,\"id_str\":\"9302282\",\"name\":\"Josh Roesslein\",\"screen_name\":\"applepie\",\"location\":\"San Francisco Bay Area\",\"description\":\"pro\\u00b7gram\\u00b7mer (n) An organism capable of converting caffeine into code. Coding @ http:\\/\\/t.co\\/Rt18iqhC9z\",\"url\":null,\"entities\":{\"description\":{\"urls\":[{\"url\":\"http:\\/\\/t.co\\/Rt18iqhC9z\",\"expanded_url\":\"http:\\/\\/OpenGov.com\",\"display_url\":\"OpenGov.com\",\"indices\":[80,102]}]}},\"protected\":false,\"followers_count\":540,\"friends_count\":327,\"listed_count\":31,\"created_at\":\"Mon Oct 08 03:00:34 +0000 2007\",\"favourites_count\":16,\"utc_offset\":-25200,\"time_zone\":\"Pacific Time (US & Canada)\",\"geo_enabled\":true,\"verified\":false,\"statuses_count\":8125,\"lang\":\"en\",\"contributors_enabled\":false,\"is_translator\":false,\"is_translation_enabled\":false,\"profile_background_color\":\"3B94D9\",\"profile_background_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_background_images\\/8076084\\/200911032903-12395.jpg\",\"profile_background_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_background_images\\/8076084\\/200911032903-12395.jpg\",\"profile_background_tile\":false,\"profile_image_url\":\"http:\\/\\/pbs.twimg.com\\/profile_images\\/2813279506\\/f0addfcfa062b23a94c00931ff35f03a_normal.jpeg\",\"profile_image_url_https\":\"https:\\/\\/pbs.twimg.com\\/profile_images\\/2813279506\\/f0addfcfa062b23a94c00931ff35f03a_normal.jpeg\",\"profile_link_color\":\"ABB8C2\",\"profile_sidebar_border_color\":\"000000\",\"profile_sidebar_fill_color\":\"000000\",\"profile_text_color\":\"000000\",\"profile_use_background_image\":false,\"has_extended_profile\":false,\"default_profile\":false,\"default_profile_image\":false,\"following\":false,\"follow_request_sent\":false,\"notifications\":false,\"translator_type\":\"none\"}}"
+                },
+                "headers": {
+                    "content-length": [
+                        "1946"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "last-modified": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "set-cookie": [
+                        "lang=en; Path=/",
+                        "guest_id=v1%3A147838224067934624; Domain=.twitter.com; Path=/; Expires=Mon, 05-Nov-2018 21:44:00 UTC"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "content-disposition": [
+                        "attachment; filename=json.json"
+                    ],
+                    "expires": [
+                        "Tue, 31 Mar 1981 05:00:00 GMT"
+                    ],
+                    "x-transaction": [
+                        "0049513a00b12a12"
+                    ],
+                    "content-type": [
+                        "application/json;charset=utf-8"
+                    ],
+                    "strict-transport-security": [
+                        "max-age=631138519"
+                    ],
+                    "status": [
+                        "200 OK"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "server": [
+                        "tsa_b"
+                    ],
+                    "x-access-level": [
+                        "read-write-directmessages"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate, pre-check=0, post-check=0"
+                    ],
+                    "x-response-time": [
+                        "138"
+                    ],
+                    "date": [
+                        "Sat, 05 Nov 2016 21:44:00 GMT"
+                    ],
+                    "x-connection-hash": [
+                        "17f4e097a927f4fda1406c6e9765b27d"
+                    ],
+                    "x-twitter-response-tags": [
+                        "BouncerCompliant"
+                    ]
+                }
+            },
+            "request": {
+                "method": "POST",
+                "uri": "https://api.twitter.com/1.1/lists/subscribers/destroy.json?owner_screen_name=applepie&slug=stars",
+                "body": null,
+                "headers": {
+                    "Host": [
+                        "api.twitter.com"
+                    ],
+                    "Content-Length": [
+                        "0"
+                    ]
+                }
+            }
+        }
+    ]
+}
