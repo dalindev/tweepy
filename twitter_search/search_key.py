@@ -21,6 +21,7 @@ import sys
 # Add the ptdraft folder path to the sys.path list
 sys.path.append("/twitter_search")
 from twitter_search import app_config
+from nltk.corpus import stopwords
 
 
 class TwitterClient(object):
@@ -71,31 +72,54 @@ class TwitterClient(object):
         #     # printing the text stored inside the tweet object
         #     print(tweet.user.screen_name, "OBJ-----------:", tweetText)
 
-    def clean_tweet(self, tweet):
+    def tokenizing_tweet(self, tweet):
         """ 
-        Utility function to clean tweet text by removing links, special characters 
-        using simple regex statements. 
+        Tokenization:
+        Using regular expression mentioned below we will remove HTML Tags, 
+        @Mentions, Hash Tags, URLs and various other irrelevant terms that 
+        provide no value in our analysis
         """
-        return " ".join(
-            re.sub(
-                "(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet
-            ).split()
+        regex_str = [
+            r"<[^>]+>",  # HTML tags
+            r"(?:@[\w_]+)",  # @-mentions
+            r"(?:\#+[\w_]+[\w\'_\-]*[\w_]+)",  # hash-tags
+            r"http[s]?://(?:[a-z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-f][0-9a-f]))+",  # URLs
+            r"(?:(?:\d+,?)+(?:\.?\d+)?)",  # numbers
+            r"(?:[a-z][a-z'\-_]+[a-z])",  # words with - and '
+            r"(?:[\w_]+)",  # other words
+            r"(?:\S)",  # anything else
+        ]
+
+        # compiling our regular expression
+        tokens_re = re.compile(
+            r"(" + "|".join(regex_str) + ")", re.VERBOSE | re.IGNORECASE
         )
+
+        return tokens_re.findall(tweet)
 
     def get_tweet_sentiment(self, tweet):
         """ 
         Utility function to classify sentiment of passed tweet 
         using textblob's sentiment method 
         """
+        # punctuation = list(string.punctuation)
+        swords = set(stopwords.words("english"))
+
+        # tokenizing tweet
+        tweet = self.tokenizing_tweet(tweet)
+
+        # removing stopwords
+        tweet = " ".join([term for term in tweet if term.lower() not in set(swords)])
+
         # create TextBlob object of passed tweet text
-        analysis = textblob.TextBlob(self.clean_tweet(tweet))
+        analysis = textblob.TextBlob(tweet)
         # set sentiment
-        if analysis.sentiment.polarity > 0:
-            return "positive"
-        elif analysis.sentiment.polarity == 0:
-            return "neutral"
-        else:
-            return "negative"
+        # if analysis.sentiment.polarity > 0.00:
+        #     return "positive"
+        # elif analysis.sentiment.polarity == 0:
+        #     return "neutral"
+        # else:
+        return analysis.sentiment.polarity
 
     def get_tweets(self, query, count=100):
         """ 
@@ -106,7 +130,22 @@ class TwitterClient(object):
 
         try:
             # call twitter api to fetch tweets
-            fetched_tweets = self.api.search(q=query, count=count)
+            """
+            - lang (en)
+            - result_type (mixed recent popular):
+                * mixed : Include both popular and real time results in the response.
+                * recent : return only the most recent results in the response
+                * popular : return only the most popular results in the response.
+            """
+            fetched_tweets = self.api.search(
+                q=query, lang="en", result_type="mixed", count=count
+            )
+
+            print(
+                "[ Step 1 ] {0} <= Search [{1}] from twitter API".format(
+                    len(fetched_tweets), query
+                )
+            )
 
             # parsing tweets one by one
             for tweet in fetched_tweets:
@@ -132,6 +171,7 @@ class TwitterClient(object):
                 else:
                     tweets.append(parsed_tweet)
 
+            print("[ Step 2 ] {} <= unique tweets".format(len(tweets)))
             # return parsed tweets
             return tweets
 
@@ -144,31 +184,37 @@ def main():
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
-    tweets = api.get_tweets(query="Donald Trump", count=100)
+    tweets = api.get_tweets(query="video games", count=100)
 
     # picking positive tweets from tweets
-    ptweets = [tweet for tweet in tweets if tweet["sentiment"] == "positive"]
-    # percentage of positive tweets
-    print("Positive tweets percentage: {} %".format(100 * len(ptweets) / len(tweets)))
+    ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
+    p_sum = sum([t["sentiment"] for t in ptweets])
+    p_percentage = 100 * len(ptweets) / len(tweets)
+
     # picking negative tweets from tweets
-    ntweets = [tweet for tweet in tweets if tweet["sentiment"] == "negative"]
-    # percentage of negative tweets
-    print("Negative tweets percentage: {} %".format(100 * len(ntweets) / len(tweets)))
+    ntweets = [tweet for tweet in tweets if tweet["sentiment"] < 0]
+    n_sum = sum([t["sentiment"] for t in ntweets])
+    n_percentage = 100 * len(ntweets) / len(tweets)
+
     # percentage of neutral tweets
-    print(
-        "Neutral tweets percentage: {} % ".format(
-            100 * (len(tweets) - len(ntweets) - len(ptweets)) / len(tweets)
-        )
-    )
+    neu_percentage = 100 * (len(tweets) - len(ntweets) - len(ptweets)) / len(tweets)
+
+    print("[ Result ] Positive : {} %  Weight: {}".format(p_percentage, p_sum))
+    print("[ Result ] Negative : {} %  Weight: {}".format(n_percentage, n_sum))
+    print("[ Result ] Neutral  : {} % ".format(neu_percentage))
+    print("[ Result ] Positive : {}".format(len(ptweets)))
+    print("[ Result ] Negative : {}".format(len(ntweets)))
+    print("[ Result ] Neutral  : {}".format(len(tweets) - len(ntweets) - len(ptweets)))
+    print("[ Result ] Total => : {}".format(len(tweets)))
 
     # printing first 5 positive tweets
     print("\n\nPositive tweets:")
-    for tweet in ptweets[:100]:
+    for tweet in ptweets[:5]:
         print(tweet["text"])
 
     # printing first 5 negative tweets
     print("\n\nNegative tweets:")
-    for tweet in ntweets[:100]:
+    for tweet in ntweets[:5]:
         print(tweet["text"])
 
 
