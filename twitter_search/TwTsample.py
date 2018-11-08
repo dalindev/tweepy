@@ -1,3 +1,5 @@
+"""
+
 (u 'FarmLeadSam', 'OBJ-----------:', Status(contributors = None, truncated = False, text = u 'RT @FarmLead: Grain markets this morning are mostly in the green ahead of tomorrow\u2019s November #WASDE and after last night\u2019s U.S. mid-term e\u2026', is_quote_status = False, in_reply_to_status_id = None, id = 1060277226371866625, favorite_count = 0, _api = < tweepy.api.API object at 0x10208fad0 > , author = User(follow_request_sent = False, has_extended_profile = False, profile_use_background_image = True, _json = {
 	u 'follow_request_sent': False,
 	u 'has_extended_profile': False,
@@ -589,3 +591,5 @@
 	u 'iso_language_code': u 'en',
 	u 'result_type': u 'recent'
 }))
+
+"""
