@@ -1,9 +1,9 @@
 from __future__ import absolute_import, print_function
 
-import pickle
-import pprint
-import json
-import string
+# import pickle
+# import pprint
+# import json
+# import string
 import re
 
 import tweepy
@@ -113,12 +113,7 @@ class TwitterClient(object):
 
         # create TextBlob object of passed tweet text
         analysis = textblob.TextBlob(tweet)
-        # set sentiment
-        # if analysis.sentiment.polarity > 0.00:
-        #     return "positive"
-        # elif analysis.sentiment.polarity == 0:
-        #     return "neutral"
-        # else:
+
         return analysis.sentiment.polarity
 
     def get_tweets(self, query, count=100):
