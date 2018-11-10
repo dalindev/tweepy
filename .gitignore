@@ -7,13 +7,13 @@ env.sh
 tweepy.egg-info
 
 # vscode
-*.vscode/
-.vscode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# *.vscode/
+# .vscode
+# .vscode/*
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
 
 # Created by https://www.gitignore.io/api/vim,python
 
