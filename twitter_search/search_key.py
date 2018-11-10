@@ -1,4 +1,4 @@
-from __future__ import absolute_import, print_function
+# from __future__ import absolute_import, print_function
 
 # import pickle
 # import pprint
@@ -9,10 +9,12 @@ import re
 import tweepy
 import nltk
 import textblob
+import pattern
+import emoji
+import operator
 
-# import emoji
 # import re
-# import decimal
+# import decimal`
 # import MySQLdb
 
 # from dateutil import parser
@@ -23,6 +25,7 @@ sys.path.append("/twitter_search")
 from twitter_search import app_config
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
+from pattern.en import spelling
 
 class TwitterClient(object):
     """
@@ -53,6 +56,14 @@ class TwitterClient(object):
         # PASSWD = app_config.PASSWD
         # DATABASE = app_config.DATABASE
 
+    def reduce_lengthening(self, word):
+        """
+        remove repeated characters > 2
+        ex: awwwwsome
+        """
+        pattern = re.compile(r"(.)\1{2,}")
+        return pattern.sub(r"\1\1", word)
+
     def tokenizing_tweet(self, tweet):
         """
         Tokenization:
@@ -62,7 +73,7 @@ class TwitterClient(object):
         """
         return re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet.lower()).split()
 
-    def get_tweet_sentiment(self, tweet):
+    def clean_tweet(self, tweet):
         """
         Utility function to classify sentiment of passed tweet
         using textblob's sentiment method
@@ -71,22 +82,19 @@ class TwitterClient(object):
         swords = set(stopwords.words("english"))
         ps = PorterStemmer()
 
-        # print('1 --', tweet)
+        # Step 1 - emoji to text
+        tweet = emoji.demojize(tweet)
 
-        # tokenizing tweet
+        # Step 2 - tokenizing tweet - list
         tweet = self.tokenizing_tweet(tweet)
 
-        print('2 --', " ".join(tweet) )
+        # Step 3 - reduce length (ex: awwwwsome)
+        tweet = [self.reduce_lengthening(term) for term in tweet]
 
-        # removing stopwords
-        tweet = " ".join([ps.stem(term) for term in tweet if term not in set(swords)])
+        # Step 4 - remove stopwords then stemming word
+        tweet = [ps.stem(term) for term in tweet if term not in set(swords)]
 
-        print('3 --', tweet)
-
-        # create TextBlob object of passed tweet text
-        analysis = textblob.TextBlob(tweet)
-
-        return analysis.sentiment.polarity
+        return tweet
 
     def get_tweets(self, query, count=100, res_type="mixed"):
         """
@@ -94,6 +102,7 @@ class TwitterClient(object):
         """
         # empty list to store parsed tweets
         tweets = []
+        counts = dict()
 
         try:
             # call twitter api to fetch tweets
@@ -118,10 +127,24 @@ class TwitterClient(object):
                 except AttributeError:
                     parsed_tweet["text"] = tweet.text
 
+
+                cleaned_tweet = self.clean_tweet(parsed_tweet["text"])
+
+                 # count word frequency
+                for word in cleaned_tweet:
+                    if word in counts:
+                        counts[word] += 1
+                    else:
+                        counts[word] = 1
+
+                # removing stopwords
+                cleaned_tweet = " ".join(cleaned_tweet)
+
+                # create TextBlob object of passed tweet text
+                analysis = textblob.TextBlob(cleaned_tweet)
+
                 # saving sentiment of tweet
-                parsed_tweet["sentiment"] = self.get_tweet_sentiment(
-                    parsed_tweet["text"]
-                )
+                parsed_tweet["sentiment"] = analysis.sentiment.polarity
 
                 # appending parsed tweet to tweets list
                 if tweet.retweet_count > 0:
@@ -132,6 +155,11 @@ class TwitterClient(object):
                     tweets.append(parsed_tweet)
 
             print("[ Step 2 ] {} <= unique tweets".format(len(tweets)))
+
+            res = sorted(counts.items(),key=operator.itemgetter(1),reverse=True)
+
+            print(res)
+
             # return parsed tweets
             return tweets
 
