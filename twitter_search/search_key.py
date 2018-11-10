@@ -79,23 +79,7 @@ class TwitterClient(object):
         @Mentions, Hash Tags, URLs and various other irrelevant terms that
         provide no value in our analysis
         """
-        regex_str = [
-            r"<[^>]+>",  # HTML tags
-            r"(?:@[\w_]+)",  # @-mentions
-            r"(?:\#+[\w_]+[\w\'_\-]*[\w_]+)",  # hash-tags
-            r"http[s]?://(?:[a-z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-f][0-9a-f]))+",  # URLs
-            r"(?:(?:\d+,?)+(?:\.?\d+)?)",  # numbers
-            r"(?:[a-z][a-z'\-_]+[a-z])",  # words with - and '
-            r"(?:[\w_]+)",  # other words
-            r"(?:\S)",  # anything else
-        ]
-
-        # compiling our regular expression
-        tokens_re = re.compile(
-            r"(" + "|".join(regex_str) + ")", re.VERBOSE | re.IGNORECASE
-        )
-
-        return tokens_re.findall(tweet)
+        return re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split()
 
     def get_tweet_sentiment(self, tweet):
         """
@@ -105,11 +89,17 @@ class TwitterClient(object):
         # punctuation = list(string.punctuation)
         swords = set(stopwords.words("english"))
 
+        # print('1 --', tweet)
+
         # tokenizing tweet
         tweet = self.tokenizing_tweet(tweet)
 
+        # print('2 --', tweet)
+
         # removing stopwords
         tweet = " ".join([term for term in tweet if term.lower() not in set(swords)])
+
+        print('3 --', tweet)
 
         # create TextBlob object of passed tweet text
         analysis = textblob.TextBlob(tweet)
@@ -179,7 +169,7 @@ def main():
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
-    tweets = api.get_tweets(query="black friday", count=100)
+    tweets = api.get_tweets(query="black friday", count=10)
 
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
