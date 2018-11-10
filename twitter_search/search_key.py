@@ -73,10 +73,10 @@ class TwitterClient(object):
         #     print(tweet.user.screen_name, "OBJ-----------:", tweetText)
 
     def tokenizing_tweet(self, tweet):
-        """ 
+        """
         Tokenization:
-        Using regular expression mentioned below we will remove HTML Tags, 
-        @Mentions, Hash Tags, URLs and various other irrelevant terms that 
+        Using regular expression mentioned below we will remove HTML Tags,
+        @Mentions, Hash Tags, URLs and various other irrelevant terms that
         provide no value in our analysis
         """
         regex_str = [
@@ -98,9 +98,9 @@ class TwitterClient(object):
         return tokens_re.findall(tweet)
 
     def get_tweet_sentiment(self, tweet):
-        """ 
-        Utility function to classify sentiment of passed tweet 
-        using textblob's sentiment method 
+        """
+        Utility function to classify sentiment of passed tweet
+        using textblob's sentiment method
         """
         # punctuation = list(string.punctuation)
         swords = set(stopwords.words("english"))
@@ -117,8 +117,8 @@ class TwitterClient(object):
         return analysis.sentiment.polarity
 
     def get_tweets(self, query, count=100):
-        """ 
-        Main function to fetch tweets and parse them. 
+        """
+        Main function to fetch tweets and parse them.
         """
         # empty list to store parsed tweets
         tweets = []
@@ -179,7 +179,7 @@ def main():
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
-    tweets = api.get_tweets(query="video games", count=100)
+    tweets = api.get_tweets(query="black friday", count=100)
 
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
