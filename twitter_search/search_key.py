@@ -22,7 +22,7 @@ import sys
 sys.path.append("/twitter_search")
 from twitter_search import app_config
 from nltk.corpus import stopwords
-
+from nltk.stem import PorterStemmer
 
 class TwitterClient(object):
     """
@@ -48,29 +48,10 @@ class TwitterClient(object):
             print("Error: Authentication Failed")
 
         # == Database ==
-        HOST = app_config.HOST
-        USER = app_config.USER
-        PASSWD = app_config.PASSWD
-        DATABASE = app_config.DATABASE
-
-        # Creating the API object while passing in auth information
-        # api = tweepy.API(self.auth)
-        # # The search term you want to find
-        # query = "FarmLead"
-        # # Language code (follows ISO 639-1 standards)
-        # language = "en"
-        # # Calling the user_timeline function with our parameters
-        # results = api.search(q=query, lang=language, count=15, show_user=True)
-        # # foreach through all tweets pulled
-        # for tweet in results:
-        #     # getting tweet text
-        #     try:
-        #         tweetText = tweet["extended_tweet"]["full_text"]
-        #     except AttributeError:
-        #         tweetText = tweet["text"]
-
-        #     # printing the text stored inside the tweet object
-        #     print(tweet.user.screen_name, "OBJ-----------:", tweetText)
+        # HOST = app_config.HOST
+        # USER = app_config.USER
+        # PASSWD = app_config.PASSWD
+        # DATABASE = app_config.DATABASE
 
     def tokenizing_tweet(self, tweet):
         """
@@ -79,7 +60,7 @@ class TwitterClient(object):
         @Mentions, Hash Tags, URLs and various other irrelevant terms that
         provide no value in our analysis
         """
-        return re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split()
+        return re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet.lower()).split()
 
     def get_tweet_sentiment(self, tweet):
         """
@@ -88,16 +69,17 @@ class TwitterClient(object):
         """
         # punctuation = list(string.punctuation)
         swords = set(stopwords.words("english"))
+        ps = PorterStemmer()
 
         # print('1 --', tweet)
 
         # tokenizing tweet
         tweet = self.tokenizing_tweet(tweet)
 
-        # print('2 --', tweet)
+        print('2 --', " ".join(tweet) )
 
         # removing stopwords
-        tweet = " ".join([term for term in tweet if term.lower() not in set(swords)])
+        tweet = " ".join([ps.stem(term) for term in tweet if term not in set(swords)])
 
         print('3 --', tweet)
 
@@ -106,7 +88,7 @@ class TwitterClient(object):
 
         return analysis.sentiment.polarity
 
-    def get_tweets(self, query, count=100):
+    def get_tweets(self, query, count=100, res_type="mixed"):
         """
         Main function to fetch tweets and parse them.
         """
@@ -115,15 +97,8 @@ class TwitterClient(object):
 
         try:
             # call twitter api to fetch tweets
-            """
-            - lang (en)
-            - result_type (mixed recent popular):
-                * mixed : Include both popular and real time results in the response.
-                * recent : return only the most recent results in the response
-                * popular : return only the most popular results in the response.
-            """
             fetched_tweets = self.api.search(
-                q=query, lang="en", result_type="mixed", count=count
+                q=query, lang="en", result_type=res_type, count=count
             )
 
             print(
@@ -169,7 +144,14 @@ def main():
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
-    tweets = api.get_tweets(query="black friday", count=10)
+    """
+    - lang (en)
+    - result_type (mixed recent popular):
+        * mixed : Include both popular and real time results in the response.
+        * recent : return only the most recent results in the response
+        * popular : return only the most popular results in the response.
+    """
+    tweets = api.get_tweets(query="world of warcraft", count=100, res_type="mixed")
 
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
