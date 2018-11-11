@@ -21,9 +21,9 @@ import operator
 import sys
 
 # Add the ptdraft folder path to the sys.path list
-sys.path.append("/twitter_search")
+sys.path.append("/model")
 
-from twitter_search import app_config
+from model import app_config
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from pattern.en import spelling
