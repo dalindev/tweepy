@@ -22,6 +22,7 @@ import sys
 
 # Add the ptdraft folder path to the sys.path list
 sys.path.append("/twitter_search")
+
 from twitter_search import app_config
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -168,7 +169,7 @@ class TwitterClient(object):
             print("Error : " + str(e))
 
 
-def main():
+def search_tweet(search_query, limit, result_type="mixed"):
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
@@ -179,7 +180,7 @@ def main():
         * recent : return only the most recent results in the response
         * popular : return only the most popular results in the response.
     """
-    tweets = api.get_tweets(query="world of warcraft", count=100, res_type="mixed")
+    tweets = api.get_tweets(query=search_query, count=limit, res_type=result_type)
 
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
@@ -213,7 +214,4 @@ def main():
         print(tweet["text"])
 
 
-if __name__ == "__main__":
-    # calling main function
-    main()
 
