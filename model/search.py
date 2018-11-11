@@ -111,11 +111,11 @@ class TwitterClient(object):
                 q=query, lang="en", result_type=res_type, count=count
             )
 
-            print(
-                "[ Step 1 ] {0} <= Search [{1}] from twitter API".format(
-                    len(fetched_tweets), query
-                )
-            )
+            # print(
+            #     "[ Step 1 ] {0} <= Search [{1}] from twitter API".format(
+            #         len(fetched_tweets), query
+            #     )
+            # )
 
             # parsing tweets one by one
             for tweet in fetched_tweets:
@@ -155,21 +155,21 @@ class TwitterClient(object):
                 else:
                     tweets.append(parsed_tweet)
 
-            print("[ Step 2 ] {} <= unique tweets".format(len(tweets)))
+            # print("[ Step 2 ] {} <= unique tweets".format(len(tweets)))
 
-            res = sorted(counts.items(),key=operator.itemgetter(1),reverse=True)
+            word_frequency = sorted(counts.items(),key=operator.itemgetter(1),reverse=True)
 
-            print(res)
+            # print(word_frequency)
 
             # return parsed tweets
-            return tweets
+            return (tweets, word_frequency)
 
         except tweepy.TweepError as e:
             # print error (if any)
             print("Error : " + str(e))
 
 
-def search_tweet(search_query, limit, result_type="mixed"):
+def search_tweet(search_query, limit, result_type="mixed", word_freq=25):
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
@@ -180,38 +180,70 @@ def search_tweet(search_query, limit, result_type="mixed"):
         * recent : return only the most recent results in the response
         * popular : return only the most popular results in the response.
     """
-    tweets = api.get_tweets(query=search_query, count=limit, res_type=result_type)
+    response = {}
+
+    res = api.get_tweets(query=search_query, count=limit, res_type=result_type)
+    tweets = res[0]
+    word_frequency = res[1]
+    total_count = len(tweets)
 
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet["sentiment"] > 0]
-    p_sum = sum([t["sentiment"] for t in ptweets])
-    p_percentage = 100 * len(ptweets) / len(tweets)
+    p_count = len(ptweets)
+    p_weight_sum = sum([t["sentiment"] for t in ptweets])
+    p_percentage = 100.0 * p_count / total_count
 
     # picking negative tweets from tweets
     ntweets = [tweet for tweet in tweets if tweet["sentiment"] < 0]
-    n_sum = sum([t["sentiment"] for t in ntweets])
-    n_percentage = 100 * len(ntweets) / len(tweets)
+    n_count = len(ntweets)
+    n_weight_sum = sum([t["sentiment"] for t in ntweets])
+    n_percentage = 100.0 * n_count / total_count
 
     # percentage of neutral tweets
-    neu_percentage = 100 * (len(tweets) - len(ntweets) - len(ptweets)) / len(tweets)
+    neu_count = total_count - p_count - n_count
+    neu_percentage = 100.0 * neu_count / total_count
 
-    print("[ Result ] Positive : {} %  Weight: {}".format(p_percentage, p_sum))
-    print("[ Result ] Negative : {} %  Weight: {}".format(n_percentage, n_sum))
-    print("[ Result ] Neutral  : {} % ".format(neu_percentage))
-    print("[ Result ] Positive : {}".format(len(ptweets)))
-    print("[ Result ] Negative : {}".format(len(ntweets)))
-    print("[ Result ] Neutral  : {}".format(len(tweets) - len(ntweets) - len(ptweets)))
-    print("[ Result ] Total => : {}".format(len(tweets)))
+    # print("[ Result ] Positive : {} %  Weight: {}".format(p_percentage, p_weight_sum))
+    # print("[ Result ] Negative : {} %  Weight: {}".format(n_percentage, n_weight_sum))
+    # print("[ Result ] Neutral  : {} % ".format(neu_percentage))
+    # print("[ Result ] Positive : {}".format(len(ptweets)))
+    # print("[ Result ] Negative : {}".format(len(ntweets)))
+    # print("[ Result ] Neutral  : {}".format(len(tweets) - len(ntweets) - len(ptweets)))
+    # print("[ Result ] Total => : {}".format(len(tweets)))
 
     # printing first 5 positive tweets
-    print("\n\nPositive tweets:")
-    for tweet in ptweets[:5]:
-        print(tweet["text"])
+    # print("\n\nPositive tweets:")
+    # for tweet in ptweets[:5]:
+    #     print(tweet["text"])
 
     # printing first 5 negative tweets
-    print("\n\nNegative tweets:")
-    for tweet in ntweets[:5]:
-        print(tweet["text"])
+    # print("\n\nNegative tweets:")
+    # for tweet in ntweets[:5]:
+    #     print(tweet["text"])
+
+    # return top xx freq word
+    response['word_frequency'] = word_frequency[:word_freq]
+
+    response['sentiment_analysis'] = dict({
+        'counts': {
+            'total': total_count,
+            'positive': p_count,
+            'negative': n_count,
+            'neutral': neu_count,
+        },
+        'percentage': {
+            'positive': p_percentage,
+            'negative': n_percentage,
+            'neutral': neu_percentage,
+        }
+    })
+
+    response['tweets_data'] = dict({
+        'positive_tweets': ptweets,
+        'negative_tweets': ntweets,
+    })
+
+    return response
 
 
 

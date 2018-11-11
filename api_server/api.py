@@ -20,7 +20,8 @@ app = Flask(__name__)
 
 
 @app.route('/search', methods=['GET'])
-def query_search():
+def search_by_keyword():
+    response = dict()
 
     # validate token...
     authenticate.validate()
@@ -29,12 +30,19 @@ def query_search():
     req = request.args
 
     search_query = req.get("query", "")
-    counts = req.get("counts", 100)
+    counts = int(req.get("tweet_limit", 100))
+    word_fq = int(req.get("word_freq", 10))
 
-    search.search_tweet(search_query, counts)
-    print('Request: {} '.format(search_query))
+    response['data'] = search.search_tweet(
+        search_query=search_query,
+        limit=counts,
+        word_freq=word_fq,
+    )
 
-    return json.dumps(search_query)
+    response['result'] = True if response['data'] else False
+
+    return json.dumps(response)
+
 
 # @app.route('/search', methods=['POST'])
 # def query_search():
