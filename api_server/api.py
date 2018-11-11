@@ -25,10 +25,16 @@ def query_search():
     # validate token...
     authenticate.validate()
 
-    qry = request.args.get("query")
-    search.search_tweet(qry, 100)
-    print('Request: {} '.format(qry))
-    return json.dumps(qry)
+    # request obj
+    req = request.args
+
+    search_query = req.get("query", "")
+    counts = req.get("counts", 100)
+
+    search.search_tweet(search_query, counts)
+    print('Request: {} '.format(search_query))
+
+    return json.dumps(search_query)
 
 # @app.route('/search', methods=['POST'])
 # def query_search():
