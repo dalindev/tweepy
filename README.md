@@ -2,7 +2,7 @@
 
 * data mining using tweepy (search by key words ex: 'trump')
 * sentiment analysis using NLTK, textblob etc
-* words frequence count from the batch of tweeter messages (remove stopwords and stemming)
+* words frequence count from a batch of tweeter messages (remove stopwords and stemming)
 * calling methods by API
   ```(ex: localhost:5000/search?query=trump&tweet_limit=100&word_freq=20)```
 
