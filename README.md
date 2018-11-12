@@ -19,7 +19,7 @@ TODO:
 
 ### To run you need:
 
-1. python 2.7+
+1. python 3.7.0
 2. MySQL
 3. Twitter Account with consumer key and access token (get approved from twitter first)
 
