@@ -4,11 +4,10 @@ from flask import (
     request
 )
 import json
-import authenticate
+from api_server import authenticate
 
 # key for calling api, once we have database setup
 # use proper login/auth
-from app_config import LOGIN_TEMP_KEY
 from model import search
 
 
